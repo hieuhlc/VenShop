@@ -11,12 +11,9 @@
 development:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
   database: VenShop_development
-  pool: 5
   username: root
   password: "123"
-  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,19 +21,13 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
-  database: VenShop_test
-  pool: 5
+  database: VenShop_development
   username: root
   password: "123"
-  socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
-  reconnect: false
-  database: VenShop_production
-  pool: 5
+  database: VenShop_development
   username: root
   password: "123"
-  socket: /var/run/mysqld/mysqld.sock
