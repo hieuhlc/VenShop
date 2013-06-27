@@ -1,4 +1,9 @@
 VenShop::Application.routes.draw do
+
+  root to: 'home_page#home'
+  match '/login',    to: 'home_page#login'
+  match '/register',   to: 'home_page#register'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
