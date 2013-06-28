@@ -1,10 +1,10 @@
 VenShop::Application.routes.draw do
-  resources :user
+  resources :users
   #get "user/new"
 
   root to: 'home_page#home'
   match '/login',    to: 'home_page#login'
-  match '/register',   to: 'user#new'
+  match '/register',   to: 'users#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
