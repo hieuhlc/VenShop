@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
 	end
 	def update
 		@Product = Product.find(params[:id])
-		if @Product.update_attributes(params[:id])
+		if @Product.update_attributes(params[:Product])
 			flash[:success] = "Product info updated!"
 			redirect_to @Product
 		else
@@ -31,9 +31,9 @@ class ProductsController < ApplicationController
 		redirect_to @curr
 	end
 	def create
-	  	@Product = Product.new(params[:Product])
+	  	@Product = Product.new(params[:product])
 	  	@Product.user_id ||= User.find_by_remember_token(cookies[:remember_token]).id
-	  	@Product.category_id = Category.find(:all, :conditions => { :name => @Product.category_name })
+	  	@Product.category_id = Category.find_by_name(@Product.category_name).cat_id
 	  	if @Product.save
 	  		flash[:success] = "Product added!"
 	  		redirect_to @Product

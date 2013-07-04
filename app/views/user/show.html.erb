@@ -15,8 +15,12 @@
 		    <li>
 		  		<%= product_image p.image,"big",p.name %>
 		  		<%= link_to p.name, p %>
+		  	</br>
 		  		<%= link_to "Delete Product", p, method: :delete,data: { confirm: "You sure?" } %>
-		  		<%= link_to "Edit info", 
+		  	</br>
+		  		<%= link_to "Edit info", edit_product_path(p) %>
+		  	</br>
+		  		<%= link_to "Add to cart", new_cart_path(p) %>
 			</li>
 		  <% end %>
 		</ul>

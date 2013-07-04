@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user, url: new_user_path) do |f| %>
-      <%= render 'shared/error_messages' %>
+
       <%= f.label :email %>
       <%= f.text_field :email %>
 
@@ -13,7 +13,8 @@
 
       <%= f.label :password_confirmation, "Retype your password" %>
       <%= f.password_field :password_confirmation %>
-
+      <% @error = @user %>
+      <%= render 'shared/error_messages' %>
       <%= f.submit "Create my account!", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

@@ -9,8 +9,8 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container" id="mainlayout">
-      <div><img src="http://3.bp.blogspot.com/-xr_YCxnkHuw/TZxesjXaf3I/AAAAAAAAABc/S0WcGcQJb2A/s1600/Esq-Web-Banner_38181014.jpg" width="1200" height="400"></div>
-      <div class="row-fluid span12">
+      <img src="http://3.bp.blogspot.com/-xr_YCxnkHuw/TZxesjXaf3I/AAAAAAAAABc/S0WcGcQJb2A/s1600/Esq-Web-Banner_38181014.jpg">
+      <div class="row-fluid span12 test">
           <%= render 'layouts/navside' %>
           <div class="span9"><% flash.each do |key,value| %>
           <%= content_tag(:div, value, class: "alert alert-#{key}") %>

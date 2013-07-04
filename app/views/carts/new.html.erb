@@ -1,0 +1,25 @@
+<% provide(:title, 'Add item to cart') %>
+<h2>You are about to add this item into your cart</h2>
+
+<div class="row">
+  <div class="span6 offset3">
+    <div class="center hero-unit">
+        <%= product_image(@Product.image,"big",@Product.name) %><h2><%= @Product.name %></h2>
+        <p><%= @Product.description %></p>
+    </div>
+
+    <%= form_for(@cart, url: new_cart_path) do |c| %>
+      
+      <label for="cat_name">Quantity</label>
+      <select name="cart[number]" value="cat_name">
+        <% for i in (1..20) do %>
+        <option><%=i%></option>
+        <% end %>
+      </select>
+
+      <% @error = @cart %>
+      <%= render 'shared/error_messages' %>
+      <%= c.submit "Add to my cart", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

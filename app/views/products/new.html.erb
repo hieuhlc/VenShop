@@ -3,13 +3,17 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@Product, url: new_product_path, :html => { :id => "formproduct" }) do |p| %>
-      <%= render 'shared/product_error_messages' %>
+    <%= form_for(@Product, url: new_product_path) do |p| %>
+   
       <%= p.label :name %>
       <%= p.text_field :name %>
 
-      <%= p.label :category %>
-      <%= p.collection_select :category_id, Category.all, :id, :name %>
+      <label for="cat_name">Category Name</label>
+      <select name="product[category_name]" value="cat_name">
+        <% Category.all.each do |c| %>
+        <option><%=c.name%></option>
+        <% end %>
+      </select>
 
       <%= p.label :price %>
       <%= p.number_field :price %>
@@ -22,9 +26,9 @@
 
       <%= p.label :description %>
       <%= p.text_area :description %>
-
+      <% @error = @Product %>
+      <%= render 'shared/error_messages' %>
       <%= p.submit "Post product", class: "btn btn-large btn-primary" %>
-    </br>Note: please input image link
     <% end %>
   </div>
 </div>

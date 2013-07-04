@@ -3,6 +3,7 @@ VenShop::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :products
   resources :categories
+  resources :carts
   #get "user/new"
 
   root to: 'home_page#home'

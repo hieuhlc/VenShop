@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 		@Category = Category.new
 	end
 	def create
-		@Category = Category.new(params[:Category])
+		@Category = Category.new(params[:category])
 	  	@Category.save
   	end
   	def index

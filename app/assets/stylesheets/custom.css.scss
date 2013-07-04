@@ -223,3 +223,7 @@ input {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.row-fluid:before, .row-fluid:after {
+  padding-top: 20px;
+}

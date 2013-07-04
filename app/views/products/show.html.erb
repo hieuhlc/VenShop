@@ -4,5 +4,7 @@
       	<%= product_image(@Product.image,"big",@Product.name) %>
       	<h2><%= @Product.name %></h2>
       	<p><%= @Product.description %></p>
+		</br>
+		<%= link_to "Add to cart", new_cart_path %>
     </div>
 </div>
