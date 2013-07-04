@@ -5,8 +5,6 @@ class SessionsController < ApplicationController
 		user = User.find_by_email(params[:session][:email].downcase)
 		if user && user.authenticate(params[:session][:password])
 			log_in user
-			logger.debug "=================================================="
-			logger.debug user
 			redirect_back_or user
 			#Login and redirect to user's profile page
 		else

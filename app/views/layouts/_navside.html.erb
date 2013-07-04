@@ -1,0 +1,11 @@
+<div id="sidenav">
+  <aside class="well sidebar-nav pull-left span3">
+    <ul class="nav nav-list">
+      <li class="nav-header">Category</li>
+      <% Category.all.each do |cat| %>
+      	<li><%= link_to cat.name, cat %></li>
+      <%end%>
+    </ul>
+  </aside><!--/.well -->
+</div>
+

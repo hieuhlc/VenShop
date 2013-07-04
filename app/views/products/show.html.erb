@@ -1,0 +1,8 @@
+<% provide(:title, "Detail product") %>
+<div class="row">
+  <div class="center hero-unit">
+      	<%= product_image(@Product.image,"big",@Product.name) %>
+      	<h2><%= @Product.name %></h2>
+      	<p><%= @Product.description %></p>
+    </div>
+</div>

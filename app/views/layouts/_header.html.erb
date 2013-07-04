@@ -1,18 +1,23 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <%= link_to "VenShop", root_path, id: "logo" %>
+      <form class="form-search pull-left" id="headersearch">
+        <div class="input-append">
+        <input type="text" class="search-query" placeholder="Search something" action="/products" method="get">
+        <button type="submit" class="btn" id="searchbutton"><i class="icon-search"></i></button>
+        </div>
+      </form>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Home",    root_path %></li>
-          <%logger.debug "========================================="%>
-          <%logger.debug loged_in?%>
+          <li><%= link_to "Home",root_path %></li>
           <% if loged_in? %>
+          <li><%= link_to "Upload Item",new_product_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
-                <li><%=link_to "Profile", current_user %></li>
+                <li><%=link_to "Profile/Cart", current_user %></li>
                 <li><%=link_to "Edit Profile", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li>

@@ -1,0 +1,12 @@
+<% provide(:title, "Category Detail") %>
+<h1>Category <%=@Category.name%></h1>
+<%= will_paginate @Product %>
+	<ul class="categories">
+	  <% @Product.each do |p| %>
+	    <li>
+	  		<%= product_image p.image, "small", p.name %>
+	  		<%= link_to p.name, p %>
+		</li>
+	  <% end %>
+	</ul>
+<%= will_paginate @Product %>

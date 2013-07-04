@@ -1,6 +1,8 @@
 VenShop::Application.routes.draw do
   resources :user
   resources :sessions, only: [:new, :create, :destroy]
+  resources :products
+  resources :categories
   #get "user/new"
 
   root to: 'home_page#home'
@@ -8,6 +10,9 @@ VenShop::Application.routes.draw do
   match '/logout', to: 'sessions#destroy', via: :delete
   match '/register',   to: 'user#new'
   match '/user/new', to: 'user#create'
+  match '/products/list', to: 'products#index'
+  match '/products/new', to: 'products#create'
+  match '/products', to: 'products#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

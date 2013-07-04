@@ -1,0 +1,30 @@
+<% provide(:title, 'Post an Item') %>
+<h1>Please give info</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@Product, url: new_product_path, :html => { :id => "formproduct" }) do |p| %>
+      <%= render 'shared/product_error_messages' %>
+      <%= p.label :name %>
+      <%= p.text_field :name %>
+
+      <%= p.label :category %>
+      <%= p.collection_select :category_id, Category.all, :id, :name %>
+
+      <%= p.label :price %>
+      <%= p.number_field :price %>
+
+      <%= p.label :count %>
+      <%= p.number_field :count %>
+
+      <%= p.label :image %>
+      <%= p.text_field :image %>
+
+      <%= p.label :description %>
+      <%= p.text_area :description %>
+
+      <%= p.submit "Post product", class: "btn btn-large btn-primary" %>
+    </br>Note: please input image link
+    <% end %>
+  </div>
+</div>

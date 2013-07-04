@@ -3,9 +3,10 @@ class UserController < ApplicationController
   before_filter :correct_user, only: [:edit, :update]
   def show
   	@user = User.find(params[:id])
+    @Product = Product.paginate(:page => params[:page], :per_page => 20, :conditions => { :user_id => @user.id })
   end
   def index
-    @user = User.paginate(page: params[:page])
+    @user = User.paginate(page: params[:page], per_page: 10)
   end
   def new
   	@user = User.new
@@ -36,13 +37,13 @@ class UserController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User deleted!"
-    redirect_to users_url
+    redirect_to user_index_url
   end
   private
   def loged_in_user
     unless loged_in?
       store_location
-      redirect_to login_url, notice: "Plz login first"
+      redirect_to login_url, notice: "Plz login first!"
     end
   end
   def correct_user

@@ -116,6 +116,7 @@ DEPENDENCIES
   coffee-rails (= 3.2.2)
   faker (= 1.0.1)
   jquery-rails (= 2.0.2)
+  json
   mysql2
   rails (= 3.2.13)
   sass-rails (= 3.2.5)

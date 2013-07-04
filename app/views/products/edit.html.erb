@@ -1,0 +1,30 @@
+<% provide(:title, "Edit product") %>
+<h1>Edit product info</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@Product) do |f| %>
+      <%= render 'shared/product_error_messages' %>
+      
+      <%= p.label :name %>
+      <%= p.text_field :name %>
+
+      <%= p.label :category %>
+      <%= p.collection_select :category_id, Category.all, :id, :name %>
+
+      <%= p.label :price %>
+      <%= p.number_field :price %>
+
+      <%= p.label :count %>
+      <%= p.number_field :count %>
+
+      <%= p.label :image %>
+      <%= p.text_field :image %>
+
+      <%= p.label :description %>
+      <%= p.text_area :description %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

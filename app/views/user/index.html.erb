@@ -2,12 +2,12 @@
 <h1>All users</h1>
 <%= will_paginate %>
 <ul class="users">
-  <% @users.each do |user| %>
+  <% @user.each do |user| %>
     <li>
   <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %>
+  <%= link_to "Example Users", user %>
   <% if current_user.admin? && !current_user?(user) %>
-    | <%= link_to "delete", user, method: :delete, data: { confirm: "You sure?" } %>
+    | <%= link_to "Delete acc", user, method: :delete, data: { confirm: "You sure?" } %>
   <% end %>
 </li>
 

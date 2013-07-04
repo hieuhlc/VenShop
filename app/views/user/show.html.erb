@@ -1,11 +1,25 @@
 <% provide(:title, @user.email) %>
-<div class="row">
-  <aside class="span4">
-    <section>
+<div class="row-fluid">
+  	<div class="span4">
       <h1>
         <%= gravatar_for @user %>
         <%= @user.email %>
       </h1>
-    </section>
-  </aside>
+        <%=link_to "Edit Profile", edit_user_path(current_user) %>
+    </div>
+    <div class="span9">
+      	<h1>All Products</h1>
+		<%= will_paginate @Product%>
+		<ul class="products">
+		  <% @Product.each do |p| %>
+		    <li>
+		  		<%= product_image p.image,"big",p.name %>
+		  		<%= link_to p.name, p %>
+		  		<%= link_to "Delete Product", p, method: :delete,data: { confirm: "You sure?" } %>
+		  		<%= link_to "Edit info", 
+			</li>
+		  <% end %>
+		</ul>
+		<%= will_paginate @Product%>
+	</div>
 </div>
