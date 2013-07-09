@@ -10,8 +10,9 @@ gem 'json'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'solr-ruby'
 gem 'mysql2'
+gem 'thin'
 
 
 # Gems used only for assets and not required
@@ -23,6 +24,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.2'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

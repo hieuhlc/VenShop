@@ -4,6 +4,7 @@ class UserController < ApplicationController
   def show
   	@user = User.find(params[:id])
     @Product = Product.paginate(:page => params[:page], :per_page => 20, :conditions => { :user_id => @user.id })
+    @cart = Cart.paginate(:page => params[:page], :per_page => 20, :conditions => { :user_id => @user.id })
   end
   def index
     @user = User.paginate(page: params[:page], per_page: 10)

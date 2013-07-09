@@ -1,4 +1,7 @@
 VenShop::Application.routes.draw do
+  root to: 'home_page#home'
+  
+  match '/carts/pay', to: 'carts#pay', as: "pay_cart"
   resources :user
   resources :sessions, only: [:new, :create, :destroy]
   resources :products
@@ -6,7 +9,7 @@ VenShop::Application.routes.draw do
   resources :carts
   #get "user/new"
 
-  root to: 'home_page#home'
+  match '/carts/new/:id' , to: 'carts#new', as: "new_cart"
   match '/login',    to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
   match '/register',   to: 'user#new'
@@ -14,6 +17,9 @@ VenShop::Application.routes.draw do
   match '/products/list', to: 'products#index'
   match '/products/new', to: 'products#create'
   match '/products', to: 'products#destroy', via: :delete
+  match '/carts/new', to: 'carts#create', via: :post, as: "create_cart"
+  match '/carts/show', to: 'user#show'
+  match '/carts/empty/:id', to: 'carts#empty', as: "empty_cart"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

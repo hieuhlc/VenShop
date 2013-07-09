@@ -1,12 +1,17 @@
 <% provide(:title, "Category Detail") %>
 <h1>Category <%=@Category.name%></h1>
 <%= will_paginate @Product %>
-	<ul class="categories">
+	<table class="categories pull-left" id="showcat">
 	  <% @Product.each do |p| %>
-	    <li>
-	  		<%= product_image p.image, "small", p.name %>
-	  		<%= link_to p.name, p %>
-		</li>
+	    <tr>
+	  		<td class="span2 center"><%= link_to product_image(p.image,"small",p.name), p %></td>
+  			<td class="span8"><%= link_to p.name, p %></td>
+  			<td class="span2">
+  				<form action="<%= new_cart_path(p.id)%>">
+				<button type="submit" class="btn"><i class="icon-shopping-cart"></i></button>
+				</form>
+			</td>
+		</tr>
 	  <% end %>
-	</ul>
+	</table>
 <%= will_paginate @Product %>

@@ -1,29 +1,65 @@
 <% provide(:title, @user.email) %>
 <div class="row-fluid">
-  	<div class="span4">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.email %>
-      </h1>
-        <%=link_to "Edit Profile", edit_user_path(current_user) %>
-    </div>
-    <div class="span9">
-      	<h1>All Products</h1>
+  	<table class="span12">
+      <tr>
+        <td><%= gravatar_for @user %></td>
+        <td><%= @user.email %>
+        	<hr>
+			<form action="<%= edit_user_path(current_user)%>">
+			<button type="submit" class="btn"><i class="icon-edit"></i> Edit info</button>
+			</form>
+		</td>
+      </tr>
+    </table>
+    <div class="span12">
+    	<hr>
+      	<h2>All Products</h2>
 		<%= will_paginate @Product%>
 		<ul class="products">
 		  <% @Product.each do |p| %>
 		    <li>
-		  		<%= product_image p.image,"big",p.name %>
+		  		<%= link_to product_image(p.image,"big",p.name), p %>
 		  		<%= link_to p.name, p %>
 		  	</br>
 		  		<%= link_to "Delete Product", p, method: :delete,data: { confirm: "You sure?" } %>
 		  	</br>
 		  		<%= link_to "Edit info", edit_product_path(p) %>
-		  	</br>
-		  		<%= link_to "Add to cart", new_cart_path(p) %>
 			</li>
 		  <% end %>
 		</ul>
 		<%= will_paginate @Product%>
+	</div>	
+  	</br>
+  		<% @paid = Cart.where('user_id = ?', @user.id) %>
+  		<% if (!@paid.where(:pay => false).empty?) %>
+  		<%= link_to("Checkout Cart", pay_cart_path, method: :get) %>
+  		<% end %>
+  		<% if (!@paid.empty?) %>
+  		<%= link_to("Empty Cart", empty_cart_path(@user)) %>
+  		<% end %>
+	<div class="span12">
+		<hr>
+      	<h2>All Items in cart</h2>
+      	<% @sum = 0 %>
+		  	<% @cart.each do |c| %>
+			  	<% p = Product.find(c.product_id) %>
+			  	<% if !c.pay %>
+			  		<% @sum = @sum + p.price.to_i*c.number.to_i %>
+			  	<% end %>
+					<ul class="carts">
+				    <li>
+				  		<%= link_to product_image(p.image,"big",p.name), p %>
+				  		<%= link_to p.name, p %>
+				  		Price: <%= p.price %>
+				  		Number: <%= c.number %>
+				  	</br>
+				  		<% if (!@paid.empty?) %>
+				  			<%= link_to "Delete Product", c, method: :delete,data: { confirm: "You sure?" } %>
+				  			<%= link_to "- Edit number", edit_cart_path(p) %>
+				  		<% end %>
+					</li>
+					</ul>
+			<% end %>
+			<p>Total money = <%= @sum %></p>
 	</div>
 </div>

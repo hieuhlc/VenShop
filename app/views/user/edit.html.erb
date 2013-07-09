@@ -4,7 +4,6 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>
@@ -15,7 +14,10 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <% @error = @user %>
+      <%= render 'shared/error_messages' %>
+
+      <button type="submit" class="btn"><i class="icon-edit"></i> Save changes</button>
     <% end %>
 
     <%= gravatar_for @user %>

@@ -1,18 +1,54 @@
-<h2>Recommend Item</h2>
+<h2><i class="icon-bookmark"></i> | Recommend Item | <i class="icon-bookmark"></i></h2>
 <div class="row-fluid" id="ritem">
-	<% @Product.each do |p| %>
-    		<div class="span3">
-    			<%= link_to p.name, p %>
-              	<%= product_image p.image, "big", p.name %>
-            </div><!--/span-->
-    <%end%>
+    <table border="1px" border-spacing="1px" class="center">
+        <tr>
+            <% for i in (0..2) do %>
+                <td>
+                    <div class="span3">
+                        <%= link_to @Product[i].name, @Product[i] %>
+                    </br>
+                        <%= link_to product_image(@Product[i].image,"big",@Product[i].name), @Product[i] %>
+                    </div><!--/span-->
+                </td>
+            <% end %>
+        </tr>
+        <tr>
+            <% for i in (3..5) do %>
+                <td>
+                    <div class="span3">
+                        <%= link_to @Product[i].name, @Product[i] %>
+                    </br>
+                        <%= link_to product_image(@Product[i].image,"big",@Product[i].name), @Product[i] %>
+                    </div><!--/span-->
+                </td>
+            <% end %>
+        </tr>
+    </table>
  </div>
- <h2>New Item</h2>
+ <h2><i class="icon-bookmark"></i> | New Item | <i class="icon-bookmark"></i></h2>
  <div class="row-fluid">
-	<% @Count.each do |p| %>
-    		<div class="span3">
-    			<%= link_to p.name, p %>
-              	<%= product_image p.image, "big", p.name %>
-            </div><!--/span-->
-    <%end%>
+	<table border="1px" border-spacing="1px" class="center">
+        <tr>
+            <% for i in (0..2) do %>
+                <td>
+                    <div class="span3">
+                        <%= link_to @Count[i].name, @Count[i] %>
+                    </br>
+                        <%= link_to product_image(@Count[i].image,"big",@Count[i].name), @Count[i] %>
+                    </div><!--/span-->
+                </td>
+            <% end %>
+        </tr>
+        <tr>
+            <% for i in (3..5) do %>
+                <td>
+                    <div class="span3">
+                        <%= link_to @Count[i].name, @Count[i] %>
+                    </br>
+                        <%= link_to product_image(@Count[i].image,"big",@Count[i].name), @Count[i] %>
+                    </div><!--/span-->
+                </td>
+            <% end %>
+        </tr>
+    </table>
  </div>

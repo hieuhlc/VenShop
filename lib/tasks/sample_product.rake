@@ -46,15 +46,3 @@ namespace :db do
 	end
   end
 end
-# namespace :db do
-# 	desc "Fill sample Category Id"
-# 	task cate_id: :environment do
-# 		@cat_id_set = JSON.parse(get_cat_id)
-# 		cate_id = @cat_id_set['ResultSet']['0']['Result']['Categories']['Children']
-# 		(0..19).each do |sub_id|
-# 			name = cate_id[sub_id.to_s]['Name']
-# 			id = cate_id[sub_id.to_s]['Id']
-# 			Category.create!(name: name, cat_id: id)
-# 		end
-# 	end
-# end

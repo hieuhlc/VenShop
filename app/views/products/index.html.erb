@@ -1,12 +1,18 @@
-<% provide(:title, 'All Products') %>
-<h1>All Products</h1>
-<%= will_paginate @Product %>
-	<ul class="products">
+<% provide(:title, 'Search Results') %>
+<h2>Search Result</h2>
+<hr>
+<%= will_paginate @pages %>
+	<table class="categories pull-left" id="showcat">
 	  <% @Product.each do |p| %>
-	    <li>
-	  		<%= product_image p.image,"small",p.name %>
-	  		<%= link_to p.name, p %>
-		</li>
+	    <tr>
+	  		<td class="span2 center"><%= link_to product_image(p["image"],"small",p["name"].force_encoding("utf-8")), controller: 'products', action: 'show', id: p["id"] %></td>
+  			<td class="span8"><%= link_to p["name"].force_encoding("utf-8"), controller: 'products', action: 'show', id: p["id"] %></td>
+  			<td class="span2">
+  				<form action="<%= new_cart_path(p['id'])%>">
+				<button type="submit" class="btn"><i class="icon-shopping-cart"></i></button>
+				</form>
+			</td>
+		</tr>
 	  <% end %>
-	</ul>
-<%= will_paginate @Product %>
+	</table>
+<%= will_paginate @pages %>
